@@ -29,10 +29,11 @@ func (f *Firestore) InterpretationEachValueForTime(mps map[string]interface{}) m
 				if latLng, isOk := f.assertLatLngType(ms); isOk {
 					Debugf("set LatLng %v, %#v", isOk, latLng)
 					mps[k] = latLng
-				}
-				if docRef, isOk := f.assertDocumentRef(ms); isOk {
+				} else if docRef, isOk := f.assertDocumentRef(ms); isOk {
 					Debugf("set DocumentRef %v, %#v", isOk, docRef)
 					mps[k] = docRef
+				} else {
+					mps[k] = f.InterpretationEachValueForTime(i.(map[string]interface{}))
 				}
 			}
 			//	case firestore.DocumentRef:

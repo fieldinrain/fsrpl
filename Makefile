@@ -3,7 +3,7 @@ BINARY_NAME=fsrpl
 .PHONY: build lint test test-local emulator realease
 
 clean: 
-	rm ./bin/*
+	rm -rf ./bin
 build: clean
 	go build -o ./bin/$(BINARY_NAME) ./...
 

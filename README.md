@@ -99,7 +99,7 @@ fsrpl copy "inputData/*" --dest "outputData/*"
 - export data from some documents with `dump` sub command.
 
 ```
-fsrpl dump [input document path] -f [json file directory path]
+fsrpl dump [input document path] --path [json file directory path]
 
 e.g.
 
